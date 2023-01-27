@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function Home() {
@@ -8,7 +9,8 @@ function Home() {
 
     return (
         <main>
-            HOME SEITE
+            <p>HOME SEITE</p>
+            <Link to="/shop"> <p>Go to our Shop</p> </Link>
         </main>
     )
 }
