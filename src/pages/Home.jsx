@@ -8,7 +8,7 @@ function Home() {
 
 
     return (
-        <main>
+        <main className="main_home">
             <p>HOME SEITE</p>
             <Link to="/shop"> <p>Go to our Shop</p> </Link>
         </main>
