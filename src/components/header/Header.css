@@ -9,7 +9,7 @@ header {
 .nav,
 .icons {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 header section a {

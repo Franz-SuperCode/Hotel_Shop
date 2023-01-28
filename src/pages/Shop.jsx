@@ -6,6 +6,7 @@ import ProductCard from "../components/productCard/ProductCard";
 function Shop() {
 
     const [newData, setNewData] = useState();
+    const [inputValue, setInputValue] = useState();
     //! Fetch einbauen und an ProductCard übergeben
     useEffect(() => {
         async function getData() {
@@ -18,18 +19,58 @@ function Shop() {
         getData();
     }, [])
 
+
+
+
+    //! Objekt finden dass den title hat, den man ins Input eingegeben hat
+    const resultFilter = newData?.filter(object => {
+        //Prüfe ob zunächst object.title und inputValue Werte haben
+        if (object.title && inputValue) {
+            //Prüfe ob der Titel vom Objekt den eingegebenen Wert vom Input enthält.
+            //Falls ja, gib jedes Objekt das passt in ein Array (resultFilter)
+            return object.title?.toLowerCase().includes(inputValue.toLowerCase());
+        } else {
+            return false
+        }
+    })
+
+
     return (
         <main className="main_shop">
             <form>
                 <div>
                     <img src={filter} />
                 </div>
-                <input id="searchInput" placeholder="Search..."></input>
+                {/* //! Daten aus Input in inputValue speichern */}
+                <input
+                    onChange={(e) => setInputValue(e.target.value)}
+                    id="searchInput"
+                    placeholder="Search...">
+                </input>
             </form>
 
             <section>
+
                 {
-                    newData?.map((object, index) => {
+                    //- Wert && Wird ausgeführt wenn Wert true ist
+                    //- !Wert && Wird ausgeführt wenn Wert false ist
+
+                    //Wenn kein Input Wert da ist wird über das Array gemappt von allen Daten (dem Fetch)
+                    !inputValue && newData?.map((object, index) => {
+                        // console.log(object.image);
+                        return <ProductCard
+                            key={index}
+                            title={object.title}
+                            price={object.price}
+                            category={object.category}
+                            img={object.image}
+                            id={object.id}
+                        />
+                    })
+                }
+                {
+                    //Wenn ein Input Wert da ist wird über das Array von dem Filter verwendet um zu mappen
+                    inputValue && resultFilter?.map((object, index) => {
                         // console.log(object.image);
                         return <ProductCard
                             key={index}
