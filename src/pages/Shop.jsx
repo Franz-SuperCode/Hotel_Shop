@@ -36,9 +36,9 @@ function Shop() {
                             key={index}
                             title={object.title}
                             price={object.price}
-                            description={object.description}
                             category={object.category}
                             img={object.image}
+                            id={object.id}
                         />
                     })
                 }
