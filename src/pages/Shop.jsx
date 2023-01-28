@@ -20,10 +20,9 @@ function Shop() {
 
     return (
         <main className="main_shop">
-            SHOP SEITE
             <form>
                 <div>
-                    <img src={`${filter}`} />
+                    <img src={filter} />
                 </div>
                 <input id="searchInput" placeholder="Search..."></input>
             </form>

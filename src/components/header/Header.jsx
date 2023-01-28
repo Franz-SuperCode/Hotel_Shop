@@ -6,7 +6,7 @@ import person from "../../assets/img/person.svg"
 function Header() {
     return (
         <header>
-            <h1>Hotel Shop</h1>
+            <h1>Hotel <span>Shop</span></h1>
             <section className="nav">
                 <Link to="/"> <p>Home</p> </Link>
                 <Link to="/shop"> <p>Shop</p> </Link>
